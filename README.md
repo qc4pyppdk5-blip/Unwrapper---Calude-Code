@@ -35,7 +35,7 @@ Output is saved as `model_unwrapped.png` in the same folder as the OBJ file.
 
 | Flag | Default | Description |
 |------|---------|-------------|
-| `--output FILE` / `-o FILE` | `<stem>_unwrapped.png` | Output file path |
+| `--output FILE` / `-o FILE` | `<stem>_unwrapped.png` | Output file path (always saved as PNG regardless of extension) |
 | `--width PX` | texture width | Output width in pixels |
 | `--height PX` | auto from aspect ratio | Output height in pixels |
 | `--seam DEG` | `0` | Rotate the seam position by this many degrees — useful to move the join away from a feature |

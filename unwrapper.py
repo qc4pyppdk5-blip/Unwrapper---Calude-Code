@@ -580,9 +580,9 @@ def main():
         bg_mask = cv2.flip(bg_mask.astype(np.uint8), 1).astype(bool)
         print("  Applied horizontal flip")
 
-    # ── Determine output path ────────────────────────────────────────────────
+    # ── Determine output path (always PNG) ──────────────────────────────────
     if args.output:
-        out_path = Path(args.output)
+        out_path = Path(args.output).with_suffix(".png")
     else:
         stem = Path(args.obj).stem
         out_path = Path(args.obj).parent / f"{stem}_unwrapped.png"
@@ -607,11 +607,7 @@ def main():
 
 
 def _save(img: np.ndarray, path: Path):
-    ext = path.suffix.lower()
-    if ext in (".jpg", ".jpeg"):
-        ok = cv2.imwrite(str(path), img, [cv2.IMWRITE_JPEG_QUALITY, 95])
-    else:
-        ok = cv2.imwrite(str(path), img)
+    ok = cv2.imwrite(str(path), img)
     if not ok:
         sys.exit(f"ERROR: could not write {path}")
 
